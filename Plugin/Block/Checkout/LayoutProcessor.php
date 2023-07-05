@@ -70,15 +70,16 @@ class LayoutProcessor
 
         /* config: checkout/options/display_billing_address_on = payment_page */
         if (isset($jsLayout['components']['checkout']['children']['steps']['children']['billing-step']['children']
-            ['payment']['children']['afterMethods']['children']['billing-address-form']
+            ['payment']['children']['afterMethods']['children']['billing-address-form']['children']['form-fields']
+            ['children']['telephone']
         )) {
 
             $method = 'shared';
 
             /* telephone */
             $jsLayout['components']['checkout']['children']['steps']['children']['billing-step']['children']
-            ['payment']['children']['payments-list']['children'][$key]['children']['form-fields']['children']
-            ['telephone'] = $this->helper->telephoneFieldConfig("billingAddress", $method);
+            ['payment']['children']['afterMethods']['children']['billing-address-form']['children']
+            ['form-fields']['children']['telephone'] = $this->helper->telephoneFieldConfig("billingAddress", $method);
         }
 
         return $jsLayout;
